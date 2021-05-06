@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --first-color:  #bababa;
+    --second-color: #8d8d8d;
+    --third-color:  #a6cbeb;
+    --fourth-color: #4c96d7;
+    --fifth-color:  #3a3a3a;
+    --sixth-color:  #ffffff;
+}
+
+p {
+    margin: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+html {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+body {
+    margin: 0px;
+}
+#wrapper {
+    background-color: white;
+    width: 100%;
+    padding: 0px;
+}
+
+#top-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#top-header a {
+    text-decoration: none;
+    align-self: center;
+    padding: 0px 15px;
+    color: var(--fifth-color);
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: var(--fifth-color)
+}
+
+nav li {
+    padding: 14px 0px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: var(--sixth-color);
+    margin-left: 6px;
+    padding: 14px 2px;
+}
+
+nav li a:hover {
+    background-color: var(--fourth-color);
+    padding: 16px 2px;
+    color: black;
+}
+
+footer {
+    border-top: #3a3a3a solid;
+    padding: 5px;
+}
+
+footer p {
+    text-align: center;
+    font-size: 14px;
+}
+
+main {
+    padding: 10px;
+}
+
+.product {
+    color: #326592;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-description {
+    position: relative;
+    z-index: 2;
+}
+
+.product-description h2 {
+    margin: 0px;
+}
+
+.car-img {
+    width: 100%;
+    margin-top: -40px;
+}
+
+.car-img img {
+    width: 100%;
+}
+
+.buttom {
+    margin: 20px auto;
+    text-align: center;
+    display: block;
+    z-index: 2;
+}
+
+.buttom img {
+    width: 10em
+}
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+#cards > div {
+    flex: 50%;
+}
+
+.card {
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.img-background {
+    background-color: var(--fourth-color);
+    border: #3a3a3a solid;
+}
+
+.img-background img {
+    height: 100px;
+}
+
+.card a {
+    text-align: center;
+}
+
+#reviews li {
+    margin: 20px 0px;
+}
+
+@media only screen and (min-width: 800px) {
+    /* For large screen: */
+    html {
+        background: url("../images/site/small_check.jpg") repeat center top;
+    }
+    #second-block {
+        display: flex;
+    }
+
+    #second-block > div {
+        flex: 50%;
+    }
+    #upgrades {
+        order: 1;
+    }
+    #reviews {
+        order: 2;
+    }
+
+    #wrapper {
+        background-color: white;
+        margin: 10px auto;
+        max-width: 80%;
+        border: var(--fourth-color) 5px solid;
+        border-radius: 10px;
+    }
+
+    .product {
+        padding: 40px;
+    }
+
+    #reviews, #upgrades {
+        padding: 10px;
+    }
+
+    .product-description {
+        order: 1;
+    }
+
+    .car-img {
+        order: 3;
+        margin-top: -130px;
+    }
+
+    .buttom {
+        order: 2;
+        margin: 15px 0px;
+        text-align: left;
+    }
+}
