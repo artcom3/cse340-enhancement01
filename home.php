@@ -10,10 +10,10 @@
 <body>
     <div id="wrapper">
     <header>
-        <?php require $_SERVER['DOCUMENT_ROOT'].'./phpmotors/snippets/header.php'?>
+        <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/header.php'?>
     </header>
     <nav>
-        <?php require $_SERVER['DOCUMENT_ROOT'].'./phpmotors/snippets/nav.php'?>
+        <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/nav.php'?>
     </nav>
     <main>
         <h1>Welcome to PHP Motors!</h1>
@@ -27,11 +27,11 @@
             </div>
 
             <div class="car-img">
-                <img src="./images/delorean.jpg" alt="Delorean car" id="delorean">
+                <img src="/phpmotors/images/delorean.jpg" alt="Delorean car" id="delorean">
             </div>
             
             <div class="buttom">
-            <a href="#"><img src="./images/site/own_today.png" alt="buttom own today" id="buttom-own"></a>
+            <a href="#"><img src="/phpmotors/images/site/own_today.png" alt="buttom own today" id="buttom-own"></a>
             </div>
         </div>
 
@@ -52,25 +52,25 @@
                 <div id="cards">
                     <div class="card">
                         <div class="img-background">
-                            <img src="./images/upgrades/flux-cap.png" alt="flux capacitor">
+                            <img src="/phpmotors/images/upgrades/flux-cap.png" alt="flux capacitor">
                         </div>
                         <a href="#">Flux Capacitor</a>
                     </div>
                     <div class="card">
                         <div class="img-background">
-                            <img src="./images/upgrades/flame.jpg" alt="flame">
+                            <img src="/phpmotors/images/upgrades/flame.jpg" alt="flame">
                         </div>
                         <a href="#">Flame Decals</a>
                     </div>
                     <div class="card">
                         <div class="img-background">
-                            <img src="./images/upgrades/bumper_sticker.jpg" alt="bumper stickers<">
+                            <img src="/phpmotors/images/upgrades/bumper_sticker.jpg" alt="bumper stickers<">
                         </div>
                         <a href="#">Bumper Stickers</a>
                     </div>
                     <div class="card">
                         <div class="img-background">
-                            <img src="./images/upgrades/hub-cap.jpg" alt="hub cap">
+                            <img src="/phpmotors/images/upgrades/hub-cap.jpg" alt="hub cap">
                         </div>
                         <a href="#">Hub Caps</a>
                     </div>
@@ -81,7 +81,7 @@
 
     </main>
     <footer>
-        <?php require $_SERVER['DOCUMENT_ROOT'].'./phpmotors/snippets/footer.php'?>
+        <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/snippets/footer.php'?>
     </footer>
     </div> <!-- Wrapper ends -->
 </body>
