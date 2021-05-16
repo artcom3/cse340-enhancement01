@@ -125,6 +125,18 @@ main {
     width: 10em
 }
 
+.form-button {
+    background-color: #326592;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    font-size: 16px;
+    margin: 6px 0px;
+    cursor: pointer;
+    padding: 4px 10px;
+    
+}
+
 #cards {
     display: flex;
     flex-wrap: wrap;
