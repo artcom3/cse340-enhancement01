@@ -24,4 +24,4 @@ function phpmotorsConnect()
     }   
 }
 
-phpmotorsConnect();
+// phpmotorsConnect();

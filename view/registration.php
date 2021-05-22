@@ -19,16 +19,23 @@
     </nav>
     <main>
         <h1>Register</h1>
-        <form action="/phpmotors/accounts/">
-        <label for="clientFirstname">First Name</label><br>
-        <input name="clientFirstname" id="clientFirstname" type="text"><br>
-        <label for="clientLastname">Last Name</label><br>
-        <input name="clientLastname" id="clientLastname" type="text"><br>
-        <label for="clientEmail">Email</label><br>
-        <input name="clientEmail" id="clientEmail" type="email"><br>
-        <label for="clientPassword">Password</label><br>
-        <input name="clientPassword" id="clientPassword" type="password"><br>
-        <input class="form-button" type="submit" value="Register">
+        <?php
+        if (isset($message)){
+            echo $message;
+        }
+        ?>
+        <form action="/phpmotors/accounts/index.php" method="post" >
+            <label for="clientFirstname">First Name</label><br>
+            <input name="clientFirstname" id="clientFirstname" type="text"><br>
+            <label for="clientLastname">Last Name</label><br>
+            <input name="clientLastname" id="clientLastname" type="text"><br>
+            <label for="clientEmail">Email</label><br>
+            <input name="clientEmail" id="clientEmail" type="email"><br>
+            <label for="clientPassword">Password</label><br>
+            <input name="clientPassword" id="clientPassword" type="password"><br>
+            <input type="submit" name="submit" id="regbtn" value="Register">
+            <!-- Add the action name - value pair -->
+            <input type="hidden" name="action" value="register">
         </form>
         <br>
         <a href="/phpmotors/accounts/?action=login-page">You have an account??</a>

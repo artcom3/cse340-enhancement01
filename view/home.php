@@ -44,7 +44,7 @@
                 <ul>
                     <li>"So fast its almost like traveling in time." (4/5)</li>
                     <li>"Coolest to the road." (4/5)</li>
-                    <li>"I'm feeeling Marty Mcfly!" (5/5)</li>
+                    <li>"I'm feeling Marty Mcfly!" (5/5)</li>
                     <li>"The most futuristic ride of our day." (4.5/5)</li>
                     <li>"80's living and I love it!" (5/5)</li>
                 </ul>

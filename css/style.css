@@ -9,19 +9,15 @@
     --sixth-color:  #ffffff;
 }
 
-p {
-    margin: 0px;
-}
-
 * {
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+html {
     font-family: 'Share Tech Mono', monospace;
 }
 
-html {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Share Tech Mono', monospace;
 }
 
@@ -105,6 +101,10 @@ main {
     margin: 0px;
 }
 
+.product-description p {
+    margin: 0px;
+}
+
 .car-img {
     width: 100%;
     margin-top: -40px;
@@ -125,7 +125,7 @@ main {
     width: 10em
 }
 
-.form-button {
+form input[type="submit"] {
     background-color: #326592;
     border-radius: 8px;
     color: white;
@@ -193,7 +193,7 @@ main {
     #wrapper {
         background-color: white;
         margin: 10px auto;
-        max-width: 80%;
+        max-width: 960px;
         border: var(--fourth-color) 5px solid;
         border-radius: 10px;
     }
