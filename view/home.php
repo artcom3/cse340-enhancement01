@@ -33,8 +33,8 @@
                 <img src="/phpmotors/images/delorean.jpg" alt="Delorean car" id="delorean">
             </div>
             
-            <div class="buttom">
-            <a href="#"><img src="/phpmotors/images/site/own_today.png" alt="buttom own today" id="buttom-own"></a>
+            <div class="button">
+            <a href="#"><img src="/phpmotors/images/site/own_today.png" alt="button own today" id="button-own"></a>
             </div>
         </div>
 

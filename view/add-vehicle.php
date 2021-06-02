@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php
+// Dropdown input Select
+$classificationList = '<select id="classificationId" name="classificationId">';
+foreach ($classifications as $classification) {
+    $classificationList .= "<option value='$classification[classificationId]'";
+
+    if (isset($classificationId)) {
+        if ($classification['classificationId'] === $classificationId) {
+            $classificationList .= ' selected ';
+        }
+    }
+
+    $classificationList .= ">$classification[classificationName]</option>";
+}
+$classificationList .= '</select>';
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,28 +45,28 @@
             <?php echo $classificationList ?><br>
 
             <label for="invMake">Make</label><br>
-            <input type="text" id="invMake" name="invMake"><br>
+            <input type="text" id="invMake" name="invMake" <?php if(isset($invMake)){echo "value='$invMake'";} ?> required><br>
 
             <label for="invModel">Model</label><br>
-            <input type="text" id="invModel" name="invModel"><br>
+            <input type="text" id="invModel" name="invModel" <?php if(isset($invModel)){echo "value='$invModel'";} ?> required><br>
             
             <label for="invDescription">Description</label><br>
-            <textarea id="invDescription" name="invDescription"></textarea><br>
+            <textarea id="invDescription" name="invDescription" required><?php if(isset($invDescription)){echo $invDescription;} ?></textarea><br>
             <br>
             <label for="invImage">Image Path</label><br>
-            <input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png"><br>
+            <input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";} ?> required><br>
 
             <label for="invThumbnail">Thumbnail Path</label><br>
-            <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image.png"><br>
+            <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image.png" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} ?> required><br>
             <br>
             <label for="invPrice">Price</label><br>
-            <input type="number" id="invPrice" name="invPrice" min="0"><br>
+            <input type="number" id="invPrice" name="invPrice" min="0" step="any" <?php if(isset($invPrice)){echo "value='$invPrice'";} ?> required><br>
 
             <label for="invStock">Stock</label><br>
-            <input type="number" id="invStock" name="invStock" min="0"><br>
+            <input type="number" id="invStock" name="invStock" min="0" step="1" <?php if(isset($invStock)){echo "value='$invStock'";} ?> required><br>
 
             <label for="invColor">Color</label><br>
-            <input type="text" id="invColor" name="invColor"><br>
+            <input type="text" id="invColor" name="invColor" <?php if(isset($invColor)){echo "value='$invColor'";} ?> required><br>
             <br>
             <input type="submit" name="submit" id="addvehbtn" value="Add Vehicle">
             <!-- Add the action name - value pair -->
