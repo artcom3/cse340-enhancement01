@@ -3,10 +3,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: /phpmotors/');
     exit;
 }
-if ($_SESSION['clientData']['clientLevel'] < 2) {
-    header('Location: /phpmotors/');
-    exit;
-}
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +11,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/phpmotors/css/style.css" type="text/css" rel="stylesheet" media="screen">
-    <title>Vehicle Management | PHP Motors</title>
+    <title>Content Title | PHP Motors</title>
 </head>
 <body>
     <div id="wrapper">
@@ -27,11 +24,18 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
         ?>
     </nav>
     <main>
-        <h1>Vehicle Management</h1>
+        <h1><?php echo $_SESSION['clientData']['clientFirstname'] .' '. $_SESSION['clientData']['clientLastname'] ?></h1>
         <ul>
-            <li><a href="/phpmotors/vehicles/?action=add-classification-page">Add Classification</a></li>
-            <li><a href="/phpmotors/vehicles/?action=add-vehicle-page">Add Vehicle</a></li>
+            <li>First name: <?php echo $_SESSION['clientData']['clientFirstname']?></li>
+            <li>Last name: <?php echo $_SESSION['clientData']['clientLastname']?></li>
+            <li>Email Address: <?php echo $_SESSION['clientData']['clientEmail']?></li>
+            <li>Client Level: <?php echo $_SESSION['clientData']['clientLevel']?></li>
         </ul>
+        <?php
+            if ($_SESSION['clientData']['clientLevel'] > 1) {
+                echo '<p>Go to <a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
+            }
+        ?>
     </main>
     <footer>
         <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/common/footer.php'?>

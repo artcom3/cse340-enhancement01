@@ -1,4 +1,11 @@
 <?php
+/*************************
+ * Accounts Controller
+ *************************/
+
+// Create or access a Session
+session_start();
+
 // Get the database connection file
 require_once '../library/connections.php';
 // Get functions library
@@ -38,6 +45,33 @@ switch ($action) {
             exit; 
         }
 
+        // A valid password exists, proceed with the login process
+        // Query the client data based on the email address
+        $clientData = getClient($clientEmail);
+        // Compare the password just submitted against
+        // the hashed password for the matching client
+        $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
+        // If the hashes don't match create an error
+        // and return to the login view
+        if (!$hashCheck) {
+            $message = '<p class="notice">Please check your password and try again.</p>';
+            include '../view/login.php';
+            exit;
+        }
+        // A valid user exists, log them in
+        $_SESSION['loggedin'] = TRUE;
+        // Remove the password from the array
+        // the array_pop function removes the last
+        // element from an array
+        array_pop($clientData);
+        // Store the array into the session
+        $_SESSION['clientData'] = $clientData;
+        // Add new cookie-welcome message
+        setcookie('firstname', $_SESSION['clientData']['clientFirstname'], strtotime('+1 year'), '/');
+        // Send them to the admin view
+        include '../view/admin.php';
+        exit;
+
         break;
 
     case 'Register':
@@ -49,14 +83,19 @@ switch ($action) {
         // Check data
         $clientEmail = checkEmail($clientEmail);
         $checkPassword = checkPassword($clientPassword);
-
+        // Check for an existing email
+        $existingEmail = checkExistingEmail($clientEmail);
+        if ($existingEmail) {
+            $message = '<p class="notice">That email address already exists. Do you want to login instead?</p>';
+            include '../view/login.php';
+            exit;
+        }
         // Check for missing data
-        if(empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
+        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) || empty($checkPassword)) {
             $message = '<p>Please provide information for all empty form fields.</p>';
             include '../view/registration.php';
             exit; 
         }
-        
         // Hash the checked password
         $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
         
@@ -65,11 +104,11 @@ switch ($action) {
         
         // Check and report the result
         if ($regOutcome === 1) {
-            $message = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
-            include '../view/login.php';
+            setcookie('firstname', $clientFirstname, strtotime('+1 year'), '/');
+            $_SESSION['message'] = "<p>Thanks for registering $clientFirstname. Please use your email and password to login.</p>";
+            header('Location: /phpmotors/accounts/?action=login-page');
             exit;
-        } 
-        else {
+        } else {
             $message = "<p>Sorry $clientFirstname, but the registration failed. Please try again.</p>";
             include '../view/registration.php';
             exit;
@@ -77,6 +116,14 @@ switch ($action) {
 
         break;
     
+    case 'Logout':
+        session_unset();
+        session_destroy();
+        setcookie('firstname', null, -1, '/');
+        header('Location: /phpmotors/');
+        exit;
+        break;
+
     case 'login-page':
         include '../view/login.php';
         break;
@@ -86,5 +133,6 @@ switch ($action) {
         break;
 
     default:
-
+        include '../view/admin.php';
+        break;
 }

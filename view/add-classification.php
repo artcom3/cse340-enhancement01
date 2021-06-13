@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: /phpmotors/');
+    exit;
+}
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+    header('Location: /phpmotors/');
+    exit;
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

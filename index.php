@@ -1,4 +1,11 @@
 <?php
+/*************************
+ * Phpmotors Controller
+ *************************/
+
+// Create or access a Session
+session_start();
+
 // Get the database connection file
 require_once 'library/connections.php';
 // Get functions library
@@ -12,6 +19,10 @@ $classifications = getClassifications();
 // Dynamic menu for car classifications
 $navList = buildNavList($classifications);
 
+// Check if the firstname cookie exists, get its value
+if (isset($_COOKIE['firstname'])) {
+    $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+}
 
 $action = filter_input(INPUT_GET, 'action');
 
@@ -26,4 +37,5 @@ switch ($action) {
     
     default:
         include 'view/home.php';
+        break;
 }

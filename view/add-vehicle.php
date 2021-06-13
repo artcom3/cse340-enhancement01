@@ -1,4 +1,12 @@
 <?php
+if (!isset($_SESSION['loggedin'])) {
+    header('Location: /phpmotors/');
+    exit;
+}
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+    header('Location: /phpmotors/');
+    exit;
+}
 // Dropdown input Select
 $classificationList = '<select id="classificationId" name="classificationId">';
 foreach ($classifications as $classification) {

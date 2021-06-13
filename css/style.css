@@ -35,6 +35,11 @@ body {
     justify-content: space-between;
 }
 
+#top-header span {
+    align-self: center;
+    color: var(--fifth-color);
+}
+
 #top-header a {
     text-decoration: none;
     align-self: center;

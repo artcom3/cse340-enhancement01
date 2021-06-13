@@ -1,5 +1,7 @@
 <?php
-// Vehicle Model
+/*************************
+ * Vehicle Model
+ *************************/
 
 // For inserting a new classification to the carclassifications table 
 function regClassification($classificationName) {

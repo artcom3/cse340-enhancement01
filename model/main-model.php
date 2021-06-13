@@ -1,6 +1,9 @@
 <?php
-// Main PHP Motors Model
+/*************************
+ * Main PHP Motors Model
+ *************************/
 
+// Get the car classifications from the DB
 function getClassifications() {
     // Create a connection object from the phpmotors connection function
     $db = phpmotorsConnect(); 
