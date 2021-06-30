@@ -187,6 +187,26 @@ form span {
     margin: 20px 0px;
 }
 
+#inventoryDisplay {
+    border-collapse: collapse;
+    margin: 16px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+#inventoryDisplay thead {
+    background-color: #353742;
+    color: white;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+    padding: 8px;
+    font-weight: lighter;
+}
+#inventoryDisplay tbody tr:nth-child(odd) {
+    background-color: #e5e8f8
+}
+
+
 @media only screen and (min-width: 800px) {
     /* For large screen: */
     html {

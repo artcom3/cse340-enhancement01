@@ -9,6 +9,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 }
 // Dropdown input Select
 $classificationList = '<select id="classificationId" name="classificationId">';
+$classificationList .= "<option>Choose a Classification</option>";
 foreach ($classifications as $classification) {
     $classificationList .= "<option value='$classification[classificationId]'";
 

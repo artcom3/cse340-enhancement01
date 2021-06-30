@@ -47,7 +47,7 @@ switch ($action) {
 
         // A valid password exists, proceed with the login process
         // Query the client data based on the email address
-        $clientData = getClient($clientEmail);
+        $clientData = getClientByEmail($clientEmail);
         // Compare the password just submitted against
         // the hashed password for the matching client
         $hashCheck = password_verify($clientPassword, $clientData['clientPassword']);
@@ -115,7 +115,69 @@ switch ($action) {
         }
 
         break;
+
+    case 'UpdateAccount':
+        include '../view/client-update.php';
+        exit;
+        break;
     
+    case 'modifyAccount':
+        $clientFirstname = trim(filter_input(INPUT_POST, 'clientFirstname', FILTER_SANITIZE_STRING));
+        $clientLastname  = trim(filter_input(INPUT_POST, 'clientLastname', FILTER_SANITIZE_STRING));
+        $clientEmail     = trim(filter_input(INPUT_POST, 'clientEmail', FILTER_SANITIZE_EMAIL));
+        $clientId        = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
+        // Check data and existing email
+        $clientEmail     = checkEmail($clientEmail);
+        // TO DO: Avoid if the email is the same;
+        //$existingEmail   = checkExistingEmail($clientEmail);
+
+        // Check for missing data
+        if (empty($clientFirstname) || empty($clientLastname) || empty($clientEmail) ) {
+            $messageAcco = '<p>Please provide information for all empty form fields.</p>';
+            include '../view/client-update.php';
+            exit; 
+        }
+        $updateResult = updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId);
+        if ($updateResult) {
+            $_SESSION['clientData'] = getClientById($clientId);
+            $message = "<p>$clientFirstname. Your information has been updated.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $messageAcco = "<p class='notice'>Sorry $clientFirstname, we could not updated your account information. Please try again.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        break;
+    
+    case 'modifyPassword':
+        // Filter and store password
+        $clientPassword = trim(filter_input(INPUT_POST, 'clientPassword', FILTER_SANITIZE_STRING));
+        $clientId       = trim(filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT));
+        $checkPassword  = checkPassword($clientPassword);
+
+        if (empty($checkPassword)) {
+            $messagePass = '<p>Please make sure your password matches the desired pattern.</p>';
+            include '../view/client-update.php';
+            exit; 
+        }
+        // Hash the checked password
+        $hashedPassword = password_hash($clientPassword, PASSWORD_DEFAULT);
+        $updateResult = updatePassword($hashedPassword, $clientId);
+        if ($updateResult) {
+            $_SESSION['clientData'] = getClientById($clientId);
+            $message = "<p>".$_SESSION['clientData']['clientFirstname']." Your password has been updated.</p>";
+            $_SESSION['message'] = $message;
+            header('location: /phpmotors/accounts/');
+            exit;
+        } else {
+            $messagePass = "<p class='notice'>Sorry".$_SESSION['clientData']['clientFirstname']."we could not updated your password. Please try again.</p>";
+            include '../view/client-update.php';
+            exit;
+        }
+        break;
+
     case 'Logout':
         session_unset();
         session_destroy();

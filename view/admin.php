@@ -3,7 +3,9 @@ if (!isset($_SESSION['loggedin'])) {
     header('Location: /phpmotors/');
     exit;
 }
-
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +27,24 @@ if (!isset($_SESSION['loggedin'])) {
     </nav>
     <main>
         <h1><?php echo $_SESSION['clientData']['clientFirstname'] .' '. $_SESSION['clientData']['clientLastname'] ?></h1>
+        <?php if (isset($_SESSION['loggedin'])) {echo '<p>You are logged in.</p>'; } ?>
+        <?php
+        if (isset($message)){
+            echo $message;
+        }
+        ?>
         <ul>
             <li>First name: <?php echo $_SESSION['clientData']['clientFirstname']?></li>
             <li>Last name: <?php echo $_SESSION['clientData']['clientLastname']?></li>
             <li>Email Address: <?php echo $_SESSION['clientData']['clientEmail']?></li>
-            <li>Client Level: <?php echo $_SESSION['clientData']['clientLevel']?></li>
         </ul>
+        
+        <h2>Account Management</h2>
+        <p><a href='/phpmotors/accounts/?action=UpdateAccount'>Update Account Information</a></p>
+        
         <?php
             if ($_SESSION['clientData']['clientLevel'] > 1) {
+                echo '<h2>Inventory Management</h2>';
                 echo '<p>Go to <a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
             }
         ?>
@@ -43,3 +55,4 @@ if (!isset($_SESSION['loggedin'])) {
     </div> <!-- Wrapper ends -->
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>
