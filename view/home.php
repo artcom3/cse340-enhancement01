@@ -30,7 +30,7 @@
             </div>
 
             <div class="car-img">
-                <img src="/phpmotors/images/delorean.jpg" alt="Delorean car" id="delorean">
+                <img src="/phpmotors/images/vehicles/delorean.jpg" alt="Delorean car" id="delorean">
             </div>
             
             <div class="button">

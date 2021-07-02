@@ -74,10 +74,10 @@ $classificationList .= '</select>';
             <textarea id="invDescription" name="invDescription" required><?php if(isset($invDescription)){echo $invDescription; } elseif(isset($invInfo['invDescription'])) {echo $invInfo['invDescription']; }?></textarea><br>
             <br>
             <label for="invImage">Image Path</label><br>
-            <input type="text" id="invImage" name="invImage" value="/phpmotors/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'"; } elseif(isset($invInfo['invImage'])) {echo "value='$invInfo[invImage]'"; }?> required><br>
+            <input type="text" id="invImage" name="invImage" <?php if(isset($invImage)){echo "value='$invImage'"; } elseif(isset($invInfo['invImage'])) {echo "value='$invInfo[invImage]'"; }?> required><br>
 
             <label for="invThumbnail">Thumbnail Path</label><br>
-            <input type="text" id="invThumbnail" name="invThumbnail" value="/phpmotors/images/no-image.png" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'"; } elseif(isset($invInfo['invThumbnail'])) {echo "value='$invInfo[invThumbnail]'"; }?> required><br>
+            <input type="text" id="invThumbnail" name="invThumbnail" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'"; } elseif(isset($invInfo['invThumbnail'])) {echo "value='$invInfo[invThumbnail]'"; }?> required><br>
             <br>
             <label for="invPrice">Price</label><br>
             <input type="number" id="invPrice" name="invPrice" min="0" step="any" <?php if(isset($invPrice)){echo "value='$invPrice'"; } elseif(isset($invInfo['invPrice'])) {echo "value='$invInfo[invPrice]'"; }?> required><br>
