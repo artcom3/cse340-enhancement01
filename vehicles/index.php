@@ -13,7 +13,7 @@ require_once '../library/functions.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
 // Get the vehicle model
-require_once '../model/vehicle-model.php';
+require_once '../model/vehicles-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -206,12 +206,14 @@ switch ($action) {
 
     case 'vehicle':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
-        $vehicle = getInvItemInfo($invId);
+        $vehicle = getVehicleDetails($invId);
+        $thumbnails = getVehicleThumbnails($invId);
 
         if (!$vehicle) {
             $message = "<p class='notice'>Sorry, the vehicle could not be found.</p>";
         } else {
             $vehicleDisplay = buildInvItemDisplay($vehicle);
+            $thumbnails = buildThumbnailsDisplay($thumbnails);
         }
         include '../view/vehicle-detail.php';
         break;

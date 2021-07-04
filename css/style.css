@@ -240,22 +240,51 @@ form span {
     margin-bottom: 20px;
 }
 
-#veh-left-column img {
+#veh-image img {
     width: 100%;
     border-radius: 10px;
 }
 
-#veh-right-column ul {
+#veh-details ul {
     padding: 0px;
 }
 
-#veh-right-column li {
+#veh-details li {
     list-style-type: none;
     padding: 10px;
 }
 
-#veh-right-column ul li:nth-child(odd) {
+#veh-details ul li:nth-child(odd) {
     background-color: #f2f2f2;
+}
+
+#veh-thumbnails ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+#veh-thumbnails li {
+    list-style-type: none;
+    justify-self: center;
+}
+#veh-thumbnails li img {
+    max-width: 100%;
+}
+
+#image-display {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(175px, 2fr));
+    padding: 0;
+    gap: 10px;
+}
+#image-display li {
+    list-style-type: none;
+    justify-self: center;
+}
+#image-display img {
+    max-width: 100%;
 }
 
 @media only screen and (min-width: 800px) {
@@ -334,6 +363,23 @@ form span {
     /* For vehicle detail display */
     #veh-display {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 100px repeat( auto-fit, minmax(250px, 2fr) );
+    }
+    #veh-thumbnails {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    #veh-thumbnails > h2 {
+        display: none;
+    }
+    #veh-thumbnails ul {
+        grid-template-columns: 1fr;
+    }
+    #veh-thumbnails img {
+        transition: transform .1s, box-shadow .1s;
+    }
+    #veh-thumbnails img:hover {
+        transform: scale(2.5);
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
     }
 }

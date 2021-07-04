@@ -19,11 +19,14 @@
     </nav>
     <main>
         <h1><?php echo "$vehicle[invMake] $vehicle[invModel]"; ?></h1>
-        <?php if(isset($message)){
+        <?php if (isset($message)){
             echo $message; }
         ?>
-        <?php if(isset($vehicleDisplay)){
-            echo $vehicleDisplay; } 
+        <?php if (isset($vehicleDisplay)){
+            echo '<div id="veh-display">';
+            echo $vehicleDisplay;
+            echo $thumbnails;
+            echo '</div>'; }
         ?>
     </main>
     <footer>
