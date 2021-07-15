@@ -105,9 +105,45 @@ function buildThumbnailsDisplay($thumbnails) {
     return $dt;
 }
 
-/* **********************************
+/***********************************
+*  Functions for reviews
+*************************************/
+function buildReviewsDisplay($reviews) {
+    $dt = '<div id="veh-reviews">';
+    $dt .= '<ul>';
+    foreach ($reviews as $review) {
+        $reviewOwner = substr($review['clientFirstname'], 0, 1) . $review['clientLastname'];
+        $reviewDate = date("F j, Y", strtotime($review['reviewDate']));
+        $dt .= '<li>';
+        $dt .= "<p><b>$reviewOwner</b> <span>wrote on $reviewDate</span></p>";
+        $dt .= "<p>$review[reviewText]</p>";
+        $dt .= '</li>';
+    }
+    $dt .= '</ul>';
+    $dt .= '</div>';
+    return $dt;
+}
+
+/***********************************
+*  Functions for reviews
+*************************************/
+function buildClientReviewsDisplay($reviews) {
+    $dt = '<ul>';
+    foreach ($reviews as $review) {
+        $reviewDate = date("F j, Y", strtotime($review['reviewDate']));
+        $dt .= '<li>';
+        $dt .= "<p>$review[invMake] $review[invModel] (Reviewed on $reviewDate): ";
+        $dt .= "<a href='/phpmotors/reviews/?action=edit&reviewId=$review[reviewId]'>Edit</a> | ";
+        $dt .= "<a href='/phpmotors/reviews/?action=del&reviewId=$review[reviewId]'>Delete</a></p>";
+        $dt .= '</li>';
+    }
+    $dt .= '</ul>';
+    return $dt;
+}
+
+/***********************************
 *  Functions for working with images
-************************************ */
+*************************************/
 
 // Adds "-tn" designation to file name
 function makeThumbnailName($image) {
@@ -261,3 +297,6 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
         // Free any memory associated with the old image
         imagedestroy($old_image);
 } // ends resizeImage function
+
+
+

@@ -47,7 +47,6 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
             
             <label for="invDescription">Description</label><br>
             <textarea id="invDescription" name="invDescription" required><?php if(isset($invInfo['invDescription'])) {echo $invInfo['invDescription']; }?></textarea><br>
-            <br>
 
             <input type="submit" name="submit" id="delvehbtn" value="Delete Vehicle">
             <!-- Add the action name - value pair -->

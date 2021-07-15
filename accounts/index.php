@@ -14,6 +14,8 @@ require_once '../library/functions.php';
 require_once '../model/main-model.php';
 // Get the accounts model
 require_once '../model/accounts-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 
 
 // Get the array of classifications
@@ -22,6 +24,10 @@ $classifications = getClassifications();
 // Dynamic menu for car classifications
 $navList = buildNavList($classifications);
 
+if (isset($_SESSION['loggedin'])) {
+    $reviews = getReviewsByClient($_SESSION['clientData']['clientId']);
+    $reviewsList = buildClientReviewsDisplay($reviews);
+}
 
 $action = filter_input(INPUT_POST, 'action');
 

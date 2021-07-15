@@ -12,12 +12,13 @@ require_once '../library/connections.php';
 require_once '../library/functions.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
-// Get the vehicle model
+// Get the vehicles model
 require_once '../model/vehicles-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
-
 // Dynamic menu for car classifications
 $navList = buildNavList($classifications);
 
@@ -208,12 +209,16 @@ switch ($action) {
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $vehicle = getVehicleDetails($invId);
         $thumbnails = getVehicleThumbnails($invId);
+        $reviews = getReviewsByInvItem($invId);
 
         if (!$vehicle) {
             $message = "<p class='notice'>Sorry, the vehicle could not be found.</p>";
         } else {
             $vehicleDisplay = buildInvItemDisplay($vehicle);
             $thumbnails = buildThumbnailsDisplay($thumbnails);
+            if ($reviews) {
+                $reviewsList = buildReviewsDisplay($reviews);
+            }
         }
         include '../view/vehicle-detail.php';
         break;

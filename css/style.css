@@ -287,6 +287,37 @@ form span {
     max-width: 100%;
 }
 
+.review-form textarea {
+    border: 1px solid black;
+    width: 100%;
+    padding: .5rem;
+    min-height: 3rem;
+    font-family: sans-serif;
+}
+
+.review-form-delete p {
+    padding: 10px;
+    background-color:lightgray;
+}
+
+#veh-reviews ul {
+    padding: 0;
+}
+#veh-reviews li {
+    list-style-type: none;
+    padding: 3px 15px;
+    background-color: cyan;
+    margin-bottom: 10px;
+}
+#veh-reviews li p span {
+    color: rgb(83, 83, 83);
+    font-size: 0.85em;
+}
+#veh-reviews li p:nth-child(2) {
+    padding: 10px;
+    background-color: lightcyan;
+}
+
 @media only screen and (min-width: 800px) {
     /* For large screen: */
     html {

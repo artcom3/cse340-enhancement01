@@ -48,6 +48,12 @@ if (isset($_SESSION['message'])) {
                 echo '<p>Go to <a href="/phpmotors/vehicles/">Vehicle Management</a></p>';
             }
         ?>
+        <h2>Manage Your Product Reviews</h2>
+        <?php
+            if (isset($reviewsList)) {
+                echo $reviewsList;
+            }
+        ?>
     </main>
     <footer>
         <?php require $_SERVER['DOCUMENT_ROOT'].'/phpmotors/common/footer.php'?>
