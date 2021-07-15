@@ -65,3 +65,4 @@ if (isset($_SESSION['message'])) {
     </div> <!-- Wrapper ends -->
 </body>
 </html>
+<?php unset($_SESSION['message']); ?>
